@@ -12,7 +12,7 @@ data class Activities(
     val id: Int = 0,
     val name: String,
     val date: String,
-    val time: String,
+    val time: Long,
     val category: Int,
     val desc: String = ""
 ) : Parcelable

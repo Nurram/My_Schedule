@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.github.nurram.myschedule.DateUtil
 import com.github.nurram.myschedule.R
 import com.github.nurram.myschedule.model.Activities
 import kotlinx.android.synthetic.main.item_list.view.*
@@ -27,7 +28,7 @@ class HomeAdapter(private val context: Context) : RecyclerView.Adapter<HomeAdapt
         fun bind(activities: Activities) {
             with(itemView) {
                 item_name.text = activities.name
-                item_time.text = "Starts at: ${activities.time}"
+                item_time.text = "Starts at: ${DateUtil.timeStringFromMillis(activities.time)}"
                 item_desc.text = activities.desc
                 item_delete.setOnClickListener {
                     onClickActivities.onDeleteClick(activities)

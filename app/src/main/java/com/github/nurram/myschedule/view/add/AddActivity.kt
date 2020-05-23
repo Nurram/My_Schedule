@@ -1,6 +1,7 @@
 package com.github.nurram.myschedule.view.add
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
@@ -80,10 +81,13 @@ class AddActivity : AppCompatActivity() {
 
     private fun initSavedUI() {
         val activities = intent.getParcelableExtra<Activities>(HomeFragment.ACTIVITIES)!!
-        val times = activities.time.split(":")
+        val date = DateUtil.dateStringFromMillis(activities.time)
+        val time = DateUtil.timeStringFromMillis(activities.time)
+        val times = time.split(":")
+        Log.d("TAG", "Date $date, Time $time")
 
         id = activities.id
-        curDate = activities.date
+        curDate = date
         add_date.text = curDate
         add_timepicker.hour = times[0].toInt()
         add_timepicker.minute = times[1].toInt()
@@ -93,15 +97,21 @@ class AddActivity : AppCompatActivity() {
     }
 
     private fun getActivities(): Activities? {
+        val formattedTime =
+            "$curDate ${DateUtil.formatTime(add_timepicker.hour, add_timepicker.minute)}"
+        Log.d("TAG", "Formatted Time $formattedTime")
+
         return if (isFormFilled()) {
-            Activities(
-                id = id,
-                name = add_title.text.toString(),
-                date = curDate,
-                time = DateUtil.formatTime(add_timepicker.hour, add_timepicker.minute),
-                category = add_spinner_category.selectedItemPosition,
-                desc = add_description.text.toString()
-            )
+            DateUtil.toTimeMillis(formattedTime)?.let {
+                Activities(
+                    id = id,
+                    name = add_title.text.toString(),
+                    date = curDate,
+                    time = it,
+                    category = add_spinner_category.selectedItemPosition,
+                    desc = add_description.text.toString()
+                )
+            }
         } else {
             Toast.makeText(this, "Please fill the title", Toast.LENGTH_SHORT).show()
             null
