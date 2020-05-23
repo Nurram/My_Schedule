@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".view.home.HomeFragment">
+
+    <CalendarView
+        android:id="@+id/home_calendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dateTextAppearance="@style/CalenderViewDateCustomText"
+        android:theme="@style/CalenderViewCustom"
+        android:weekDayTextAppearance="@style/CalenderViewDateCustomText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bottom_sheet_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="-48dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="336dp"
+        app:cardCornerRadius="48dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="5dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/oval" />
+
+            <TextView
+                android:id="@+id/home_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="sans-serif-light"
+                android:text="@string/your_schedule"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/home_day" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/home_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_add_24dp"
+        app:fabSize="normal" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

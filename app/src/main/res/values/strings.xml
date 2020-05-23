@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">My Schedule</string>
+    <string name="add_activity_label">Add Activity</string>
+    <string name="ex_learn_android_app_development">Ex: Learn Android App Development</string>
+    <string name="save">Save</string>
+    <string name="title">Title</string>
+    <string name="category">Category</string>
+    <string name="note">Note</string>
+    <string name="ex_do_not_forget_to_rest_for_30_minutes">Ex: Do not forget to rest for 30 minutes</string>
+    <string name="your_schedule">Your Schedule</string>
+    <string name="wake_up">Hey, Wake Up!</string>
+    <string name="check_schedule">Check Your Schedule For Today!</string>
+    <string name="an_image_to_delete_activity">An image to delete activity</string>
+
+    <string-array name="categories">
+        <item>Study</item>
+        <item>Important</item>
+        <item>Event</item>
+        <item>Rest</item>
+        <item>Playing</item>
+    </string-array>
+</resources>
